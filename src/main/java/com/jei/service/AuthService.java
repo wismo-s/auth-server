@@ -26,6 +26,11 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest request) {
+        System.out.println("Correo recibido service: " + request.getCorreo());
+        String correo = request.getCorreo();
+        if (correo == null || correo.isEmpty()) {
+            throw new IllegalArgumentException("El correo no puede estar vacío");
+        }
         UsuarioResponseDto usuario = usuarioClient.buscarPorCorreo(request.getCorreo());
 
         if (usuario == null) {
@@ -44,7 +49,8 @@ public class AuthService {
                 .subject(usuario.getCorreo())
                 .claim("nombre", usuario.getNombre())
                 .claim("apellido", usuario.getApellido())
-                .claim("rol", usuario.getRole() != null ? usuario.getRole().toString() : "USER")
+                .claim("role", usuario.getRole() != null ? usuario.getRole().toString() : "USER")
+                .claim("departamento", usuario.getDepartamento() != null ? usuario.getDepartamento().toString() : "MARKETING")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiracion))
                 .build();

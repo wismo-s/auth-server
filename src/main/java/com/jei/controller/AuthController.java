@@ -18,6 +18,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        System.out.println("Correo recibido: " + request.getCorreo());
         return ResponseEntity.ok(authService.login(request));
     }
 }
