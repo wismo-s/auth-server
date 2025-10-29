@@ -35,8 +35,16 @@ spring:
               authorization-grant-types:
                 - client_credentials
               scopes:
-                - product.read
-                - category.read
+                - issue.read
+                - issue.write
+                - epica.read
+                - epica.write
+                - proyecto.read
+                - proyecto.write
+                - user.read
+                - estadistica.read
+                - auth.read
+                - auth.write
             token:
               access-token-time-to-live: PT5M
 

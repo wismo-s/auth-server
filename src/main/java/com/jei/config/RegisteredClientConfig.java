@@ -29,8 +29,16 @@ public class RegisteredClientConfig {
                 .clientSecret(new BCryptPasswordEncoder().encode("s3cr3t"))
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .scope("product.read")
-                .scope("category.read")
+                .scope("issue.read")
+                .scope("issue.write")
+                .scope("epica.read")
+                .scope("epica.write")
+                .scope("proyecto.read")
+                .scope("proyecto.write")
+                .scope("user.read")
+                .scope("estadistica.read")
+                .scope("auth.read")
+                .scope("auth.write")
                 .tokenSettings(tokenSettings)
                 .build();
 
